@@ -1,4 +1,4 @@
-# Nick's Portfolio
+# Developer Portfolio
 
 A modern, responsive portfolio website built with React, TypeScript, and Vite. Features easy content management, GitHub integration, and optimized deployment on Cloudflare Pages.
 
@@ -38,7 +38,7 @@ A modern, responsive portfolio website built with React, TypeScript, and Vite. F
 ## 📁 Project Structure
 
 ```
-nick-portfolio/
+developer-portfolio/
 ├── src/
 │   ├── components/          # React components
 │   │   ├── ProjectCard.tsx  # Enhanced project display with links
@@ -72,7 +72,7 @@ nick-portfolio/
 ### 1. Clone and Install
 ```bash
 git clone <your-repo-url>
-cd nick-portfolio
+cd developer-portfolio
 npm install
 ```
 
@@ -186,6 +186,7 @@ The project includes optimized Vite configuration:
 
 - **[Portfolio Editing Guide](PORTFOLIO_EDITING_GUIDE.md)** - How to edit projects and experiences
 - **[Cloudflare Deployment Guide](CLOUDFLARE_DEPLOYMENT_GUIDE.md)** - Complete deployment instructions
+- **[Free Email Setup Guide](FREE_EMAIL_SETUP_GUIDE.md)** - Set up contact form with free services (Discord, Slack, Resend)
 
 ## 🔧 Configuration Files
 

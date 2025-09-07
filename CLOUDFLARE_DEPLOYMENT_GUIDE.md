@@ -28,8 +28,9 @@ This guide will walk you through deploying your portfolio to Cloudflare Pages, w
    Root directory: (leave empty)
    ```
 
-4. **Environment Variables** (if needed)
-   - No environment variables required for basic deployment
+4. **Environment Variables** (for contact form)
+   - Set up free email notifications - see [FREE_EMAIL_SETUP_GUIDE.md](FREE_EMAIL_SETUP_GUIDE.md)
+   - Minimum required: `TO_EMAIL` and one notification method
 
 5. **Deploy**
    - Click **Save and Deploy**

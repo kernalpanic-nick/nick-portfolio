@@ -1,5 +1,5 @@
 {
-  "name": "nick-portfolio",
+  "name": "developer-portfolio",
   "version": "2.0.0",
   "description": "A modern, responsive portfolio website with GitHub integration, enhanced project management, and optimized Cloudflare Pages deployment",
   "private": true,
@@ -13,7 +13,7 @@
     "github-integration",
     "cloudflare-pages"
   ],
-  "author": "Nick S.",
+  "author": "John Developer",
   "license": "MIT",
   "scripts": {
     "dev": "vite",

@@ -1,102 +1,194 @@
 import { Profile, Experience, Project, Category } from '../types';
 
 export const profile: Profile = {
-  name: 'Nick S.',
-  role: 'Systems Administrator → Infrastructure Engineer',
-  location: 'Oregon, USA',
+  name: 'John Developer',
+  role: 'Full Stack Developer → Senior Software Engineer',
+  location: 'San Francisco, CA',
   highlights: [
-    'Windows 11 rollout (350+ endpoints)',
-    'AD/GPO, DHCP/DNS, O365, Exchange',
-    'Proxmox/Hyper‑V | ZFS/Ceph',
-    'OPNsense/SonicWall | Brocade/UniFi/Aruba',
-    'Docker + Traefik v3 | LDAP | Elasticsearch'
+    'Led team of 5 developers on React migration',
+    'Built microservices architecture serving 1M+ users',
+    'Implemented CI/CD pipelines reducing deployment time by 80%',
+    'Expert in React, Node.js, Python, and AWS',
+    'Open source contributor with 500+ GitHub stars'
   ],
   links: {
-    email: 'mailto:nick@example.com',
-    github: 'https://github.com/yourhandle',
-    linkedin: 'https://www.linkedin.com/in/yourhandle/'
+    email: 'mailto:john@example.com',
+    github: 'https://github.com/johndeveloper',
+    linkedin: 'https://www.linkedin.com/in/johndeveloper/'
   }
 };
 
 export const experiences: Experience[] = [
   {
-    id: 'meriplex-copa-2023',
-    company: 'Meriplex → COPA',
-    title: 'Systems Admin / Infra Lead',
+    id: 'techcorp-senior-2023',
+    company: 'TechCorp Inc.',
+    title: 'Senior Software Engineer',
     start: '2023',
     end: 'Present',
-    location: 'Oregon, USA',
+    location: 'San Francisco, CA',
     type: 'full-time',
     bullets: [
-      'Windows 10 → 11 migration; standardized imaging (MDT/SmartDeploy/OS Deployer).',
-      'Multi‑site VLANs, DHCP relay/PXE, OPNsense/SonicWall.',
-      'Proxmox & Hyper‑V; ZFS & Ceph; 25GbE Mellanox.',
-      'Docker + Traefik v3; Elasticsearch ILM; LDAP/Authelia.'
+      'Led migration from legacy PHP system to modern React/Node.js stack, improving performance by 60%',
+      'Architected microservices infrastructure using Docker and Kubernetes on AWS',
+      'Mentored 3 junior developers and established code review best practices',
+      'Implemented automated testing suite increasing code coverage from 40% to 95%'
     ],
-    tech: ['AD/GPO', 'Hyper‑V', 'Proxmox', 'ZFS', 'Ceph', 'OPNsense', 'Brocade', 'Docker', 'Traefik', 'Elasticsearch']
+    tech: ['React', 'Node.js', 'TypeScript', 'AWS', 'Docker', 'Kubernetes', 'PostgreSQL', 'Redis']
+  },
+  {
+    id: 'startup-fullstack-2021',
+    company: 'InnovateLab Startup',
+    title: 'Full Stack Developer',
+    start: '2021',
+    end: '2023',
+    location: 'Remote',
+    type: 'full-time',
+    bullets: [
+      'Built MVP from scratch using React, Express.js, and MongoDB serving 10K+ users',
+      'Designed and implemented RESTful APIs with comprehensive documentation',
+      'Set up CI/CD pipelines using GitHub Actions and deployed to AWS EC2',
+      'Collaborated with design team to create responsive, mobile-first interfaces'
+    ],
+    tech: ['React', 'Express.js', 'MongoDB', 'JavaScript', 'AWS', 'GitHub Actions', 'Figma']
+  },
+  {
+    id: 'webagency-junior-2020',
+    company: 'Creative Web Agency',
+    title: 'Junior Developer',
+    start: '2020',
+    end: '2021',
+    location: 'Austin, TX',
+    type: 'full-time',
+    bullets: [
+      'Developed custom WordPress themes and plugins for 20+ client websites',
+      'Optimized website performance achieving 90+ Google PageSpeed scores',
+      'Collaborated with designers to implement pixel-perfect responsive designs',
+      'Maintained and updated existing client websites using PHP and MySQL'
+    ],
+    tech: ['WordPress', 'PHP', 'MySQL', 'JavaScript', 'CSS', 'HTML', 'jQuery']
   }
 ];
 
 export const categories: Category[] = [
-  { key: 'work', label: 'Work' },
-  { key: 'homelab', label: 'Homelab' },
-  { key: 'networking', label: 'Networking' },
-  { key: 'security', label: 'Security' },
-  { key: 'media', label: 'Media Automation' },
-  { key: 'docs', label: 'Docs & Guides' }
+  { key: 'web', label: 'Web Development' },
+  { key: 'mobile', label: 'Mobile Apps' },
+  { key: 'devops', label: 'DevOps & Infrastructure' },
+  { key: 'opensource', label: 'Open Source' },
+  { key: 'ai', label: 'AI & Machine Learning' },
+  { key: 'tools', label: 'Developer Tools' }
 ];
 
 export const projects: Project[] = [
   {
-    id: 'windows-11-rollout',
-    title: 'Windows 11 Enterprise Rollout (350+)',
-    category: 'work',
-    description: 'Gold image, driver injection, task sequences, rollback plan, comms templates.',
-    tech: ['MDT', 'SmartDeploy', 'OS Deployer', 'GPO', 'BitLocker', 'PowerShell'],
+    id: 'ecommerce-platform',
+    title: 'E-commerce Platform with Microservices',
+    category: 'web',
+    description: 'Full-stack e-commerce platform built with React, Node.js, and microservices architecture. Features include user authentication, payment processing, inventory management, and real-time notifications.',
+    tech: ['React', 'Node.js', 'TypeScript', 'PostgreSQL', 'Redis', 'Docker', 'AWS', 'Stripe API'],
     status: 'completed',
     featured: true,
     startDate: '2023-01',
-    endDate: '2023-06',
+    endDate: '2023-08',
     links: {
-      docs: 'https://docs.example.com/windows-11-rollout'
+      github: 'https://github.com/johndeveloper/ecommerce-platform',
+      demo: 'https://ecommerce-demo.example.com',
+      docs: 'https://docs.example.com/ecommerce-platform'
     }
   },
   {
-    id: 'proxmox-ceph-cluster',
-    title: 'Proxmox Cluster + Ceph (Quincy)',
-    category: 'homelab',
-    description: '3‑node, GPU passthrough (Arc A380), 25GbE Mellanox fabric.',
-    tech: ['Proxmox', 'Ceph', 'GPU', '25GbE', 'Mellanox'],
+    id: 'task-management-app',
+    title: 'Collaborative Task Management App',
+    category: 'web',
+    description: 'Real-time collaborative task management application with drag-and-drop interface, team workspaces, and advanced filtering. Built with modern React patterns and WebSocket integration.',
+    tech: ['React', 'TypeScript', 'Socket.io', 'Express.js', 'MongoDB', 'Material-UI'],
     status: 'active',
     featured: true,
+    startDate: '2023-09',
+    links: {
+      github: 'https://github.com/johndeveloper/task-manager',
+      demo: 'https://taskmanager-demo.example.com'
+    }
+  },
+  {
+    id: 'react-native-fitness',
+    title: 'Fitness Tracking Mobile App',
+    category: 'mobile',
+    description: 'Cross-platform mobile app for fitness tracking with workout plans, progress analytics, and social features. Integrates with health APIs and wearable devices.',
+    tech: ['React Native', 'TypeScript', 'Firebase', 'HealthKit', 'Google Fit', 'Redux'],
+    status: 'completed',
+    startDate: '2022-06',
+    endDate: '2023-02',
+    links: {
+      github: 'https://github.com/johndeveloper/fitness-tracker',
+      website: 'https://fitnessapp.example.com'
+    }
+  },
+  {
+    id: 'kubernetes-deployment',
+    title: 'Kubernetes CI/CD Pipeline',
+    category: 'devops',
+    description: 'Automated deployment pipeline using Kubernetes, Helm charts, and GitOps principles. Includes monitoring, logging, and auto-scaling configurations.',
+    tech: ['Kubernetes', 'Helm', 'GitLab CI', 'Prometheus', 'Grafana', 'ArgoCD'],
+    status: 'active',
     startDate: '2023-03',
     links: {
-      github: 'https://github.com/yourhandle/proxmox-homelab',
-      docs: 'https://docs.example.com/proxmox-setup'
+      github: 'https://github.com/johndeveloper/k8s-pipeline',
+      docs: 'https://docs.example.com/k8s-deployment'
     }
   },
   {
-    id: 'docker-traefik-stack',
-    title: 'Docker + Traefik v3 Infrastructure',
-    category: 'homelab',
-    description: 'Containerized services with automatic SSL, load balancing, and service discovery.',
-    tech: ['Docker', 'Traefik', 'Docker Compose', 'Let\'s Encrypt', 'LDAP'],
+    id: 'open-source-ui-library',
+    title: 'React Component Library',
+    category: 'opensource',
+    description: 'Open-source React component library with TypeScript support, comprehensive documentation, and automated testing. Used by 100+ projects on GitHub.',
+    tech: ['React', 'TypeScript', 'Storybook', 'Jest', 'Rollup', 'CSS-in-JS'],
     status: 'active',
-    startDate: '2023-08',
+    featured: true,
+    startDate: '2022-01',
     links: {
-      github: 'https://github.com/yourhandle/docker-traefik-stack'
+      github: 'https://github.com/johndeveloper/react-ui-components',
+      website: 'https://ui-components.example.com',
+      docs: 'https://storybook.example.com'
     }
   },
   {
-    id: 'network-automation',
-    title: 'Network Configuration Automation',
-    category: 'networking',
-    description: 'Automated VLAN provisioning, DHCP management, and firewall rule deployment.',
-    tech: ['Python', 'Ansible', 'SNMP', 'REST APIs', 'PowerShell'],
+    id: 'ai-chatbot',
+    title: 'AI-Powered Customer Support Chatbot',
+    category: 'ai',
+    description: 'Intelligent chatbot using natural language processing to handle customer inquiries. Integrates with existing support systems and learns from interactions.',
+    tech: ['Python', 'TensorFlow', 'OpenAI API', 'FastAPI', 'PostgreSQL', 'Docker'],
     status: 'in-progress',
     startDate: '2024-01',
     links: {
-      github: 'https://github.com/yourhandle/network-automation'
+      github: 'https://github.com/johndeveloper/ai-chatbot'
+    }
+  },
+  {
+    id: 'developer-productivity-tool',
+    title: 'VS Code Extension for API Testing',
+    category: 'tools',
+    description: 'Visual Studio Code extension that simplifies API testing and documentation. Features include request collections, environment variables, and response visualization.',
+    tech: ['TypeScript', 'VS Code API', 'Node.js', 'Webpack'],
+    status: 'completed',
+    startDate: '2023-10',
+    endDate: '2023-12',
+    links: {
+      github: 'https://github.com/johndeveloper/vscode-api-tester',
+      website: 'https://marketplace.visualstudio.com/items?itemName=johndeveloper.api-tester'
+    }
+  },
+  {
+    id: 'blockchain-voting-system',
+    title: 'Decentralized Voting Platform',
+    category: 'web',
+    description: 'Blockchain-based voting system ensuring transparency and security. Built with Ethereum smart contracts and React frontend.',
+    tech: ['Solidity', 'Ethereum', 'Web3.js', 'React', 'Truffle', 'MetaMask'],
+    status: 'archived',
+    startDate: '2022-03',
+    endDate: '2022-08',
+    links: {
+      github: 'https://github.com/johndeveloper/blockchain-voting',
+      docs: 'https://docs.example.com/blockchain-voting'
     }
   }
 ];
