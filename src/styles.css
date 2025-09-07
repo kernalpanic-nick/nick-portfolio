@@ -7,4 +7,12 @@
   --fg: 17 24 39;
 }
 
-body { background: rgb(var(--bg)); color: rgb(var(--fg)); }
+.dark {
+  --bg: 17 24 39;
+  --fg: 255 255 255;
+}
+
+body {
+  background: rgb(var(--bg));
+  color: rgb(var(--fg));
+}

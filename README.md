@@ -1,54 +1,71 @@
-# Deploy to Cloudflare Pages
+# Nick S. — Portfolio
 
-## 1) Create repo
+This repo contains a personal portfolio site built with **Vite**, **React**, **TypeScript**, **Tailwind CSS**, and **shadcn/ui**. It features:
+
+- A search‑filterable projects section.
+- A dark/light mode toggle.
+- A contact form stub (integrated using a serverless function and SendGrid by default; you can swap to your own email service).
+- Responsive design and accessible components.
+
+## Getting Started
+
+Install dependencies and start a local development server:
+
 ```bash
-mkdir nick-portfolio && cd nick-portfolio
-# paste files from this scaffold
-npm i
-npm run dev  # local run at http://localhost:5173
+npm install
+npm run dev
 ```
 
-Commit & push:
+Visit `http://localhost:5173` in your browser to see the site.
+
+## Building for Production
+
+To create an optimized production build:
 
 ```bash
-git init
-git add .
-git commit -m "init: portfolio scaffold"
-gh repo create nick-portfolio --public --source=. --remote=origin --push
+npm run build
 ```
 
-## 2) Cloudflare Pages setup
+The compiled files will be output to the `dist` directory. You can deploy this directory to any static hosting provider, such as GitHub Pages, Vercel, Netlify, or Cloudflare Pages.
 
-* Go to **Cloudflare Dashboard → Pages → Create project → Connect to Git**.
-* Select your `nick-portfolio` repo.
-* Build settings:
+## Contact Form
 
-  * **Framework preset**: None
-  * **Build command**: `npm run build`
-  * **Build output directory**: `dist`
-* **Add `headers.json`** (already in repo) → security headers auto-apply.
+The contact form submits to `/api/contact`, which is implemented in `functions/api/contact.ts`. This function uses SendGrid to send messages. To enable it, configure the following environment variables in your deployment platform:
 
-## 3) Environment variables (Pages Functions)
+- `SENDGRID_API_KEY` – your SendGrid API key.
+- `TO_EMAIL` – the email address where messages should be delivered.
+- `FROM_EMAIL` – the sender address (must be verified in SendGrid).
 
-In the same project → **Settings → Environment variables** (Production & Preview):
+You can replace this function or integrate with any other backend or form service if you prefer.
 
-* `SENDGRID_API_KEY` = your SendGrid API key
-* `TO_EMAIL` = your destination inbox (e.g., [you@domain.com](mailto:you@domain.com))
-* `FROM_EMAIL` = `contact@yourdomain.com` (must be a verified sender in SendGrid)
+## Dark Mode
 
-> In SendGrid, add and verify the sender domain or single sender.
+A dark mode toggle is included in the navigation bar. Clicking the toggle switches between light and dark themes by toggling the `dark` class on the document root. The CSS variables for background and text colors are defined in `src/styles.css`.
 
-## 4) Domain
+## Project Structure
 
-* In Pages → **Custom domains** → add `portfolio.yourdomain.com` or root domain.
-* Update DNS in Cloudflare to point the CNAME to your Pages project.
+```
+.
+├── .gitignore
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+├── postcss.config.js
+├── tailwind.config.ts
+├── index.html
+├── headers.json
+├── public/
+│   └── favicon.svg
+├── src/
+│   ├── main.tsx
+│   ├── App.tsx
+│   ├── components/
+│   │   ├── Section.tsx
+│   │   └── ui.tsx
+│   └── styles.css
+└── functions/
+    └── api/
+        └── contact.ts
+```
 
-## 5) Test contact form
-
-* Submit the Contact form.
-* Check Cloudflare Pages Functions logs in **Pages → Functions** if needed.
-
-## 6) Optional: Email Routing
-
-* Cloudflare **Email Routing** can forward `contact@yourdomain.com` to your real inbox for replies.
-* This is separate from outbound SendGrid, but helpful.
+Feel free to extend this project with additional pages, components, or data.
