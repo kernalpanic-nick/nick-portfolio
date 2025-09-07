@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import Section from './components/Section'
 import ContactForm from './components/ContactForm'
+import ProjectCard from './components/ProjectCard'
 import { Pill, Button } from './ui'
 import { useTheme } from './hooks/useTheme'
 import { profile, experiences, categories, projects } from './data/portfolio'
@@ -66,8 +67,8 @@ export default function App() {
       {/* EXPERIENCE */}
       <Section id="experience" title="Experience">
         <div className="space-y-4">
-          {experiences.map((e, idx) => (
-            <div key={idx} className="border rounded-2xl p-4 dark:border-gray-700">
+          {experiences.map((e) => (
+            <div key={e.id} className="border rounded-2xl p-4 dark:border-gray-700">
               <div className="flex items-center justify-between gap-2">
                 <div>
                   <h3 className="font-semibold">{e.title}</h3>
@@ -97,14 +98,8 @@ export default function App() {
             </select>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-            {filtered.map((p, i) => (
-              <div key={i} className="border rounded-2xl p-4 dark:border-gray-700">
-                <h4 className="font-semibold">{p.title}</h4>
-                <p className="text-sm text-neutral-600 mt-1 dark:text-neutral-300">{p.description}</p>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {p.tech.map((t, j) => <Pill key={j}>{t}</Pill>)}
-                </div>
-              </div>
+            {filtered.map((project) => (
+              <ProjectCard key={project.id} project={project} />
             ))}
           </div>
         </div>

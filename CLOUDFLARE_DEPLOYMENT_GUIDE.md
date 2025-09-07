@@ -22,7 +22,7 @@ This guide will walk you through deploying your portfolio to Cloudflare Pages, w
 
 3. **Configure Build Settings**
    ```
-   Framework preset: None (or select "React" if available)
+   Framework preset: Vite (or "None" if build fails)
    Build command: npm run build
    Build output directory: dist
    Root directory: (leave empty)
@@ -90,7 +90,7 @@ This guide will walk you through deploying your portfolio to Cloudflare Pages, w
    ```
    Project name: your-portfolio (or any name you prefer)
    Production branch: main
-   Framework preset: None (or select "React" if available)
+   Framework preset: Vite
    Build command: npm run build
    Build output directory: dist
    Root directory: (leave blank)
@@ -199,7 +199,18 @@ Cloudflare Pages automatically provides:
 
 ### Common Issues
 
-1. **Build Fails**
+1. **Missing Dependencies Error**
+   If you see `Cannot find package '@vitejs/plugin-react'`:
+   ```
+   Error [ERR_MODULE_NOT_FOUND]: Cannot find package '@vitejs/plugin-react'
+   ```
+   **Solutions**:
+   - Ensure `package.json` includes all dependencies in `devDependencies`
+   - Try changing Framework preset to "None" instead of "Vite"
+   - Verify Node.js version is set to 18 or later
+   - Check that `package-lock.json` or `yarn.lock` is committed to your repo
+
+2. **Build Fails**
    ```bash
    # Check build locally first
    npm install
@@ -208,14 +219,14 @@ Cloudflare Pages automatically provides:
    # If successful locally, check Cloudflare build logs
    ```
 
-2. **404 Errors on Refresh**
+3. **404 Errors on Refresh**
    - The `_redirects` file in the public folder handles this automatically
 
-3. **Environment Variables**
+4. **Environment Variables**
    - Set in Cloudflare Pages dashboard under **Settings** > **Environment variables**
    - Prefix with `VITE_` for client-side access
 
-4. **Node.js Version Issues**
+5. **Node.js Version Issues**
    - Set Node.js version in Pages settings
    - Use Node.js 18 or later
 
