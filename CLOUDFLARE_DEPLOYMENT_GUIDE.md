@@ -210,6 +210,21 @@ Cloudflare Pages automatically provides:
    - Verify Node.js version is set to 18 or later
    - Check that `package-lock.json` or `yarn.lock` is committed to your repo
 
+2. **PostCSS Configuration Error**
+   If you see `module is not defined in ES module scope`:
+   ```
+   ReferenceError: module is not defined in ES module scope
+   ```
+   **Solution**: Update `postcss.config.js` to use ES module syntax:
+   ```javascript
+   export default {
+     plugins: {
+       tailwindcss: {},
+       autoprefixer: {},
+     },
+   }
+   ```
+
 2. **Build Fails**
    ```bash
    # Check build locally first
