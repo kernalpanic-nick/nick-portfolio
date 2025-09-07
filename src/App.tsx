@@ -1,74 +1,15 @@
-import { useMemo, useState, useEffect } from 'react'
+import { useMemo, useState } from 'react'
 import Section from './components/Section'
-import { Pill, Button } from './components/ui'
-
-const profile = {
-  name: 'Nick S.',
-  role: 'Systems Administrator → Infrastructure Engineer',
-  location: 'Oregon, USA',
-  highlights: [
-    'Windows 11 rollout (350+ endpoints)',
-    'AD/GPO, DHCP/DNS, O365, Exchange',
-    'Proxmox/Hyper‑V | ZFS/Ceph',
-    'OPNsense/SonicWall | Brocade/UniFi/Aruba',
-    'Docker + Traefik v3 | LDAP | Elasticsearch'
-  ],
-  links: {
-    email: 'mailto:nick@example.com',
-    github: 'https://github.com/yourhandle',
-    linkedin: 'https://www.linkedin.com/in/yourhandle/'
-  }
-}
-
-const experiences = [
-  {
-    company: 'Meriplex → COPA',
-    title: 'Systems Admin / Infra Lead',
-    start: '2023',
-    end: 'Present',
-    bullets: [
-      'Windows 10 → 11 migration; standardized imaging (MDT/SmartDeploy/OS Deployer).',
-      'Multi‑site VLANs, DHCP relay/PXE, OPNsense/SonicWall.',
-      'Proxmox & Hyper‑V; ZFS & Ceph; 25GbE Mellanox.',
-      'Docker + Traefik v3; Elasticsearch ILM; LDAP/Authelia.'
-    ],
-    tech: ['AD/GPO', 'Hyper‑V', 'Proxmox', 'ZFS', 'Ceph', 'OPNsense', 'Brocade', 'Docker', 'Traefik', 'Elasticsearch']
-  }
-]
-
-const categories = [
-  { key: 'work', label: 'Work' },
-  { key: 'homelab', label: 'Homelab' },
-  { key: 'networking', label: 'Networking' },
-  { key: 'security', label: 'Security' },
-  { key: 'media', label: 'Media Automation' },
-  { key: 'docs', label: 'Docs & Guides' }
-]
-
-const projects = [
-  {
-    title: 'Windows 11 Enterprise Rollout (350+)',
-    category: 'work',
-    description: 'Gold image, driver injection, task sequences, rollback plan, comms templates.',
-    tech: ['MDT', 'SmartDeploy', 'OS Deployer', 'GPO', 'BitLocker', 'PowerShell']
-  },
-  {
-    title: 'Proxmox Cluster + Ceph (Quincy)',
-    category: 'homelab',
-    description: '3‑node, GPU passthrough (Arc A380), 25GbE Mellanox fabric.',
-    tech: ['Proxmox', 'Ceph', 'GPU', '25GbE', 'Mellanox']
-  }
-]
+import ContactForm from './components/ContactForm'
+import { Pill, Button } from './ui'
+import { useTheme } from './hooks/useTheme'
+import { profile, experiences, categories, projects } from './data/portfolio'
+import type { TabType } from './types'
 
 export default function App() {
-  const [tab, setTab] = useState<'all' | string>('all')
+  const [tab, setTab] = useState<TabType>('all')
   const [query, setQuery] = useState('')
-  const [dark, setDark] = useState(false)
-
-  useEffect(() => {
-    // Toggle the `dark` class on the root element
-    document.documentElement.classList.toggle('dark', dark)
-  }, [dark])
+  const { dark, toggleTheme } = useTheme()
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
@@ -92,7 +33,7 @@ export default function App() {
               <a href="#projects" className="hover:underline">Projects</a>
               <a href="#contact" className="hover:underline">Contact</a>
             </nav>
-            <Button variant="outline" onClick={() => setDark(!dark)}>
+            <Button variant="outline" onClick={toggleTheme}>
               {dark ? 'Light' : 'Dark'}
             </Button>
           </div>
@@ -171,14 +112,7 @@ export default function App() {
 
       {/* CONTACT */}
       <Section id="contact" title="Contact">
-        <form className="max-w-md border rounded-2xl p-4 dark:border-gray-700" method="post" action="/api/contact">
-          <div className="space-y-3">
-            <input required name="name" placeholder="Your name" className="w-full border rounded-xl px-3 py-2 text-sm dark:border-gray-700 dark:bg-gray-800 dark:text-white" />
-            <input required type="email" name="email" placeholder="Your email" className="w-full border rounded-xl px-3 py-2 text-sm dark:border-gray-700 dark:bg-gray-800 dark:text-white" />
-            <textarea required name="message" placeholder="Your message" className="w-full border rounded-xl px-3 py-2 text-sm min-h-[120px] dark:border-gray-700 dark:bg-gray-800 dark:text-white"></textarea>
-            <Button type="submit">Send</Button>
-          </div>
-        </form>
+        <ContactForm />
         <p className="text-xs text-neutral-500 mt-2 dark:text-neutral-400">This form sends via the Pages Function → SendGrid.</p>
       </Section>
 

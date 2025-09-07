@@ -1,4 +1,15 @@
-export const onRequestPost: PagesFunction = async (context) => {
+interface Env {
+  SENDGRID_API_KEY: string;
+  TO_EMAIL: string;
+  FROM_EMAIL?: string;
+}
+
+interface Context {
+  request: Request;
+  env: Env;
+}
+
+export const onRequestPost = async (context: Context) => {
   try {
     const formData = await context.request.formData()
     const name = String(formData.get('name') || '').trim()

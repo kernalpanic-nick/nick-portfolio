@@ -1,71 +1,117 @@
-# Nick S. — Portfolio
+# Nick's Portfolio
 
-This repo contains a personal portfolio site built with **Vite**, **React**, **TypeScript**, **Tailwind CSS**, and **shadcn/ui**. It features:
+A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS.
 
-- A search‑filterable projects section.
-- A dark/light mode toggle.
-- A contact form stub (integrated using a serverless function and SendGrid by default; you can swap to your own email service).
-- Responsive design and accessible components.
+## Features
 
-## Getting Started
+- **Modern Design**: Clean, professional layout with dark/light theme support
+- **Responsive**: Optimized for all device sizes
+- **Type Safety**: Full TypeScript implementation with proper type definitions
+- **Performance**: Optimized React components with proper state management
+- **Contact Form**: Integrated contact form with SendGrid email delivery
+- **Project Filtering**: Dynamic project filtering and search functionality
 
-Install dependencies and start a local development server:
+## Tech Stack
 
-```bash
-npm install
-npm run dev
-```
-
-Visit `http://localhost:5173` in your browser to see the site.
-
-## Building for Production
-
-To create an optimized production build:
-
-```bash
-npm run build
-```
-
-The compiled files will be output to the `dist` directory. You can deploy this directory to any static hosting provider, such as GitHub Pages, Vercel, Netlify, or Cloudflare Pages.
-
-## Contact Form
-
-The contact form submits to `/api/contact`, which is implemented in `functions/api/contact.ts`. This function uses SendGrid to send messages. To enable it, configure the following environment variables in your deployment platform:
-
-- `SENDGRID_API_KEY` – your SendGrid API key.
-- `TO_EMAIL` – the email address where messages should be delivered.
-- `FROM_EMAIL` – the sender address (must be verified in SendGrid).
-
-You can replace this function or integrate with any other backend or form service if you prefer.
-
-## Dark Mode
-
-A dark mode toggle is included in the navigation bar. Clicking the toggle switches between light and dark themes by toggling the `dark` class on the document root. The CSS variables for background and text colors are defined in `src/styles.css`.
+- **Frontend**: React 18, TypeScript, Tailwind CSS
+- **Build Tool**: Vite
+- **Deployment**: Cloudflare Pages
+- **Email**: SendGrid API
+- **Icons**: Lucide React
+- **Animations**: Framer Motion
 
 ## Project Structure
 
 ```
-.
-├── .gitignore
-├── package.json
-├── tsconfig.json
-├── vite.config.ts
-├── postcss.config.js
-├── tailwind.config.ts
-├── index.html
-├── headers.json
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── main.tsx
-│   ├── App.tsx
-│   ├── components/
-│   │   ├── Section.tsx
-│   │   └── ui.tsx
-│   └── styles.css
-└── functions/
-    └── api/
-        └── contact.ts
+src/
+├── components/          # Reusable UI components
+│   ├── Section.tsx     # Layout section wrapper
+│   ├── ContactForm.tsx # Contact form with validation
+│   └── ProjectCard.tsx # Project display card
+├── data/               # Static data and content
+│   └── portfolio.ts    # Portfolio data (profile, projects, etc.)
+├── hooks/              # Custom React hooks
+│   └── useTheme.ts     # Theme management hook
+├── types/              # TypeScript type definitions
+│   └── index.ts        # Shared interfaces and types
+├── ui.tsx              # Base UI components (Button, Pill)
+├── App.tsx             # Main application component
+├── main.tsx            # Application entry point
+└── styles.css          # Global styles and Tailwind imports
+
+functions/
+└── api/
+    └── contact.ts      # Serverless contact form handler
 ```
 
-Feel free to extend this project with additional pages, components, or data.
+## Code Improvements Made
+
+### 1. **Type Safety & Organization**
+- Added comprehensive TypeScript interfaces for all data structures
+- Separated data from components into dedicated files
+- Improved type definitions for better IDE support and error catching
+
+### 2. **Component Architecture**
+- Extracted reusable components (ContactForm, ProjectCard)
+- Implemented proper component composition
+- Added proper prop typing for all components
+
+### 3. **State Management**
+- Created custom `useTheme` hook for theme management
+- Added localStorage persistence for theme preference
+- Improved form state management with proper validation
+
+### 4. **Performance Optimizations**
+- Used `useMemo` for expensive filtering operations
+- Proper component memoization where beneficial
+- Optimized re-renders through better state structure
+
+### 5. **User Experience**
+- Enhanced button states with hover effects and transitions
+- Added loading states for form submission
+- Improved accessibility with proper semantic HTML
+- Better error handling and user feedback
+
+### 6. **Code Quality**
+- Consistent code formatting and structure
+- Proper separation of concerns
+- Improved maintainability through modular architecture
+- Better error handling in API functions
+
+### 7. **Styling Improvements**
+- Enhanced button component with better states
+- Added hover effects and transitions
+- Improved dark mode support
+- Better responsive design patterns
+
+## Development
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+## Environment Variables
+
+For the contact form to work, set these environment variables in your deployment:
+
+- `SENDGRID_API_KEY`: Your SendGrid API key
+- `TO_EMAIL`: Email address to receive contact form submissions
+- `FROM_EMAIL`: (Optional) From email address for notifications
+
+## Deployment
+
+This project is optimized for deployment on Cloudflare Pages with the included serverless function for contact form handling.
+
+## License
+
+MIT License - feel free to use this code for your own portfolio!
