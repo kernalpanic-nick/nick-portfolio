@@ -225,7 +225,21 @@ Cloudflare Pages automatically provides:
    }
    ```
 
-2. **Build Fails**
+3. **Terser Minification Error**
+   If you see `terser not found. Since Vite v3, terser has become an optional dependency`:
+   ```
+   error during build: [vite:terser] terser not found. Since Vite v3, terser has become an optional dependency. You need to install it.
+   ```
+   **Solution**: Add `terser` to your `devDependencies` in `package.json`:
+   ```json
+   {
+     "devDependencies": {
+       "terser": "^5.31.6"
+     }
+   }
+   ```
+
+4. **Build Fails**
    ```bash
    # Check build locally first
    npm install
